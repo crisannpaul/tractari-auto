@@ -21,7 +21,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(174, 166, 166, 0);
+            background: rgba(255, 255, 255, 0);
             z-index: 1000;
             padding: 1rem 0;
             transition: all 0.3s ease;
@@ -220,14 +220,25 @@
 
         /* Main Content Sections */
         .section {
-            padding: 80px 0;
+            padding: 40px 0;
             max-width: 1500px;
             margin: 0 auto;
             padding-left: 2rem;
             padding-right: 2rem;
         }
 
+        .section-red{
+            padding: 80px 0;
+            
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+           background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+
         .section-title {
+            margin-top: 40px;
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
@@ -255,7 +266,7 @@
 
         .service-card {
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
@@ -410,7 +421,7 @@
 
         .photo-carousel-container {
             position: relative;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             border-radius: 20px;
             overflow: hidden;
@@ -419,7 +430,7 @@
 
         .photo-carousel {
             position: relative;
-            height: 500px;
+            height: 600px;
         }
 
         .photo-slide {
@@ -572,6 +583,40 @@
         .contact-card a:hover {
             color: #c0392b;
             text-decoration: underline;
+        }
+
+           .features {
+            padding: 80px 0;
+            background: #e74c3c;
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .feature {
+            padding: 20px;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
         }
 
         /* Testimonials Section */
@@ -812,7 +857,7 @@
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">🚗 Tractari Auto</a>
+            <a href="#" class="logo">Tractari Auto</a>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home">Acasă</a></li>
                 <li><a href="#services">Servicii</a></li>
@@ -830,9 +875,9 @@
     <!-- Hero Section with Carousel -->
     <section class="hero" id="home">
         <div class="carousel-container">
-            <div class="carousel-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/carousel_img.jpeg')"></div>
+            <div class="carousel-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/carousel3.jpeg')"></div>
+            <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/carousel_img.jpeg')"></div>
             <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/carousel2.jpeg')"></div>
-            <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/carousel3.jpeg')"></div>
         </div>
         
         <div class="hero-content">
@@ -848,10 +893,10 @@
         </div>
     </section>
 
-     <section class="section" id="about">
+     <section class="section-red" id="about">
         <h2 class="section-title fade-in">Despre Noi</h2>
         <div class="about-intro fade-in">
-            <p>Oferim o gama completa de servicii de tractari autoturisme, camioane, autobuze, transport autoturisme pe platforma si remorcari in tara si in strainatate. Toate acestea in cel mai scurt timp si la preturi accesibile pentru dumneavostra.</p>
+            <p>Oferim o gamă completă de servicii de tractări autoturisme, camioane, autobuze, transport autoturisme pe platformă și remorcări în țară și în străinătate. Toate acestea în cel mai scurt timp și la prețuri accesibile pentru dumneavoastră.</p>
             </div>
 
     </section>
@@ -865,72 +910,80 @@
                 <div class="service-card fade-in">
                     <div class="service-icon">🚗</div>
                     <h3>Asistență Rutieră</h3>
-                    <p>Intervenții rapide pentru situații de urgență pe drum.</p>
+                    
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">🚙</div>
                     <h3>Tractări Autoturisme</h3>
-                    <p>Servicii specializate pentru toate tipurile de autoturisme.</p>
+                    
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">🚚</div>
                     <h3>Tractări Camioane</h3>
-                    <p>Echipamente profesionale pentru vehicule grele.</p>
+                   
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">🚌</div>
                     <h3>Tractări Autobuze</h3>
-                    <p>Soluții specializate pentru transport în comun.</p>
+                  
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">🚛</div>
                     <h3>Transport Auto</h3>
-                    <p>Transport sigur pe platformă specializată.</p>
+                    
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">🏗️</div>
                     <h3>Transport Utilaje</h3>
-                    <p>Mutarea utilajelor și echipamentelor industriale.</p>
+                   
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">🔧</div>
                     <h3>Depanare Auto</h3>
-                    <p>Reparații și verificări tehnice la fața locului.</p>
+                    
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">⚓</div>
                     <h3>Remorcări</h3>
-                    <p>Servicii de remorcare în țară și străinătate.</p>
+                    
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">🏗️</div>
                     <h3>Automacara</h3>
-                    <p>Servicii de ridicare și manipulare cu automacara.</p>
+                    
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">📸</div>
                     <h3>Constatarea Avariilor</h3>
-                    <p>Documentare și fotografiere profesională a avariilor.</p>
+                   
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features-section">
-        <div class="features-container">
-            <div class="features-image">
-                <img src="assets/middle_picture.jpg" alt="Tow truck in action" />
-            </div>
-            <div class="features-content">
-                <ul class="features-list">
-                    <li>RAPID</li>
-                    <li>EFICIENT</li>
-                    <li>IEFTIN</li>
-                    <li>NON-STOP</li>
-                    <li>MISIUNI INDEPLINITE</li>
-                </ul>
-               
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">✓</div>
+                    <h3>RAPID</h3>
+                    <p>Intervenții rapide în cel mai scurt timp</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">✓</div>
+                    <h3>EFICIENT</h3>
+                    <p>Soluții profesionale și eficiente</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">✓</div>
+                    <h3>IEFTIN</h3>
+                    <p>Prețuri accesibile și corecte</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">✓</div>
+                    <h3>NON-STOP</h3>
+                    <p>Disponibili 24/7 pentru urgențe</p>
+                </div>
             </div>
         </div>
     </section>
@@ -942,73 +995,19 @@
             <div class="photo-carousel-container">
                 <div class="photo-carousel" id="photoCarousel">
                    <!-- Carousel slides -->
-                    <div class="photo-slide active">
-                    <img src="assets/1.jpg" alt="Tow truck service 1" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/2.jpg" alt="Tow truck service 2" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/3.jpg" alt="Tow truck service 3" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/4.jpg" alt="Tow truck service 4" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/5.jpg" alt="Tow truck service 5" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/6.jpg" alt="Tow truck service 6" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/7.jpg" alt="Tow truck service 7" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/8.jpg" alt="Tow truck service 8" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/9.jpg" alt="Tow truck service 9" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/10.jpg" alt="Tow truck service 10" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/11.jpg" alt="Tow truck service 11" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/12.jpg" alt="Tow truck service 12" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/13.jpg" alt="Tow truck service 13" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/14.jpg" alt="Tow truck service 14" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/15.jpg" alt="Tow truck service 15" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/16.jpg" alt="Tow truck service 16" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/17.jpg" alt="Tow truck service 17" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/18.jpg" alt="Tow truck service 18" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/19.jpg" alt="Tow truck service 19" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/20.jpg" alt="Tow truck service 20" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/21.jpg" alt="Tow truck service 21" />
-                    </div>
-                    <div class="photo-slide">
-                    <img src="assets/22.jpg" alt="Tow truck service 22" />
-                    </div>
-
+                <div class="photo-slide active">
+                <img src="assets/middle_picture.jpg" alt="Tow truck service 1" />
+                </div>
+                <div class="photo-slide">
+                <img src="assets/carousel2.jpeg" alt="Tow truck service 2" />
+                </div>
+                <div class="photo-slide">
+                <img src="assets/carousel_img.jpeg" alt="Tow truck service 3" />
+                </div>
+                <div class="photo-slide">
+                <img src="assets/carousel3.jpeg" alt="Tow truck service 4" />
+                </div>
+                
                 </div>
                 <button class="photo-carousel-btn prev" id="prevPhoto">❮</button>
                 <button class="photo-carousel-btn next" id="nextPhoto">❯</button>
@@ -1238,6 +1237,7 @@
                 showPhotoSlide(currentPhotoSlide);
             });
         });
+        
     </script>
 </body>
 </html>
