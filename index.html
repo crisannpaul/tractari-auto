@@ -4,8 +4,809 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tractari Auto - Servicii Profesionale 24/7</title>
-    <link rel="stylesheet" href="home/homeStyles.css" />
-    <link rel="stylesheet" href="styles.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(174, 166, 166, 0);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e74c3c;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #e74c3c;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #e74c3c;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: #e74c3c;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section with Carousel */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 10;
+            position: relative;
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Carousel Navigation */
+        .carousel-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        /* Main Content Sections */
+        .section {
+            padding: 80px 0;
+            max-width: 1500px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about-intro {
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            margin-top: 4rem;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .features-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .features-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .features-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .features-content {
+            padding: 2rem 0;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+            padding: 1rem 0;
+            border-left: 4px solid #e74c3c;
+            padding-left: 1.5rem;
+            background: white;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(192, 57, 43, 0.1));
+            transition: width 0.3s ease;
+        }
+
+        .features-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(231, 76, 60, 0.2);
+        }
+
+        .features-list li:hover::before {
+            width: 100%;
+        }
+
+        .features-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #e74c3c;
+        }
+
+        /* Photo Carousel Section */
+        .photo-carousel-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .photo-carousel-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .photo-carousel {
+            position: relative;
+            height: 500px;
+        }
+
+        .photo-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .photo-slide.active {
+            opacity: 1;
+        }
+
+        .photo-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(231, 76, 60, 0.9);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .photo-carousel-btn:hover {
+            background: #e74c3c;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .photo-carousel-btn.prev {
+            left: 20px;
+        }
+
+        .photo-carousel-btn.next {
+            right: 20px;
+        }
+
+        .photo-carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .photo-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .photo-dot.active {
+            background: white;
+            transform: scale(1.3);
+        }
+
+        /* Contact Info Section */
+        .contact-info-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .contact-intro {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-color: #e74c3c;
+            box-shadow: 0 20px 40px rgba(231, 76, 60, 0.15);
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .contact-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .contact-card p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0.5rem 0;
+        }
+
+        .contact-card a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: #c0392b;
+            text-decoration: underline;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 20px;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial-content {
+            padding: 2.5rem 2rem;
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: #e74c3c;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .author-info h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .stars {
+            color: #f39c12;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: left;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #e74c3c;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: #e74c3c;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 1rem;
+            text-align: center;
+            color: #95a5a6;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: start;
+                align-items: center;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .features-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .features-image {
+                order: -1;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-list li {
+                font-size: 1.2rem;
+            }
+
+            .photo-carousel {
+                height: 300px;
+            }
+
+            .contact-details {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .section {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .features-section {
+                padding: 60px 0;
+            }
+
+            .features-container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -29,7 +830,7 @@
     <!-- Hero Section with Carousel -->
     <section class="hero" id="home">
         <div class="carousel-container">
-            <div class="carousel-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('assets/carousel_img.jpeg')"></div>
+            <div class="carousel-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/carousel_img.jpeg')"></div>
             <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/carousel2.jpeg')"></div>
             <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/carousel3.jpeg')"></div>
         </div>
@@ -55,72 +856,241 @@
 
     </section>
 
-
-
-
     <!-- Services Section -->
     <section class="section" id="services">
         <h2 class="section-title fade-in">Servicii Oferite</h2>
         <div class="services-showcase">
     
-    <div class="services-grid">
-        <div class="service-card fade-in">
-            <div class="service-icon">🚗</div>
-            <h3>Asistență Rutieră</h3>
-            <p>Intervenții rapide pentru situații de urgență pe drum.</p>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚗</div>
+                    <h3>Asistență Rutieră</h3>
+                    <p>Intervenții rapide pentru situații de urgență pe drum.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚙</div>
+                    <h3>Tractări Autoturisme</h3>
+                    <p>Servicii specializate pentru toate tipurile de autoturisme.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚚</div>
+                    <h3>Tractări Camioane</h3>
+                    <p>Echipamente profesionale pentru vehicule grele.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚌</div>
+                    <h3>Tractări Autobuze</h3>
+                    <p>Soluții specializate pentru transport în comun.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚛</div>
+                    <h3>Transport Auto</h3>
+                    <p>Transport sigur pe platformă specializată.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏗️</div>
+                    <h3>Transport Utilaje</h3>
+                    <p>Mutarea utilajelor și echipamentelor industriale.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔧</div>
+                    <h3>Depanare Auto</h3>
+                    <p>Reparații și verificări tehnice la fața locului.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">⚓</div>
+                    <h3>Remorcări</h3>
+                    <p>Servicii de remorcare în țară și străinătate.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏗️</div>
+                    <h3>Automacara</h3>
+                    <p>Servicii de ridicare și manipulare cu automacara.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">📸</div>
+                    <h3>Constatarea Avariilor</h3>
+                    <p>Documentare și fotografiere profesională a avariilor.</p>
+                </div>
+            </div>
         </div>
-        <div class="service-card fade-in">
-            <div class="service-icon">🚙</div>
-            <h3>Tractări Autoturisme</h3>
-            <p>Servicii specializate pentru toate tipurile de autoturisme.</p>
-        </div>
-        <div class="service-card fade-in">
-            <div class="service-icon">🚚</div>
-            <h3>Tractări Camioane</h3>
-            <p>Echipamente profesionale pentru vehicule grele.</p>
-        </div>
-        <div class="service-card fade-in">
-            <div class="service-icon">🚌</div>
-            <h3>Tractări Autobuze</h3>
-            <p>Soluții specializate pentru transport în comun.</p>
-        </div>
-        <div class="service-card fade-in">
-            <div class="service-icon">🚛</div>
-            <h3>Transport Auto</h3>
-            <p>Transport sigur pe platformă specializată.</p>
-        </div>
-        <div class="service-card fade-in">
-            <div class="service-icon">🏗️</div>
-            <h3>Transport Utilaje</h3>
-            <p>Mutarea utilajelor și echipamentelor industriale.</p>
-        </div>
-        <div class="service-card fade-in">
-            <div class="service-icon">🔧</div>
-            <h3>Depanare Auto</h3>
-            <p>Reparații și verificări tehnice la fața locului.</p>
-        </div>
-        <div class="service-card fade-in">
-            <div class="service-icon">⚓</div>
-            <h3>Remorcări</h3>
-            <p>Servicii de remorcare în țară și străinătate.</p>
-        </div>
-        <div class="service-card fade-in">
-            <div class="service-icon">🏗️</div>
-            <h3>Automacara</h3>
-            <p>Servicii de ridicare și manipulare cu automacara.</p>
-        </div>
-        <div class="service-card fade-in">
-            <div class="service-icon">📸</div>
-            <h3>Constatarea Avariilor</h3>
-            <p>Documentare și fotografiere profesională a avariilor.</p>
-        </div>
-    </div>
-</div>
-
     </section>
 
-   
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="features-container">
+            <div class="features-image">
+                <img src="assets/middle_picture.jpg" alt="Tow truck in action" />
+            </div>
+            <div class="features-content">
+                <ul class="features-list">
+                    <li>RAPID</li>
+                    <li>EFICIENT</li>
+                    <li>IEFTIN</li>
+                    <li>NON-STOP</li>
+                    <li>MISIUNI INDEPLINITE</li>
+                </ul>
+               
+            </div>
+        </div>
+    </section>
 
+    <!-- Photo Carousel Section -->
+    <section class="photo-carousel-section">
+        <div class="section-container">
+            <h2 class="section-title fade-in">Galerie Foto</h2>
+            <div class="photo-carousel-container">
+                <div class="photo-carousel" id="photoCarousel">
+                   <!-- Carousel slides -->
+                    <div class="photo-slide active">
+                    <img src="assets/1.jpg" alt="Tow truck service 1" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/2.jpg" alt="Tow truck service 2" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/3.jpg" alt="Tow truck service 3" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/4.jpg" alt="Tow truck service 4" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/5.jpg" alt="Tow truck service 5" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/6.jpg" alt="Tow truck service 6" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/7.jpg" alt="Tow truck service 7" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/8.jpg" alt="Tow truck service 8" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/9.jpg" alt="Tow truck service 9" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/10.jpg" alt="Tow truck service 10" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/11.jpg" alt="Tow truck service 11" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/12.jpg" alt="Tow truck service 12" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/13.jpg" alt="Tow truck service 13" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/14.jpg" alt="Tow truck service 14" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/15.jpg" alt="Tow truck service 15" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/16.jpg" alt="Tow truck service 16" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/17.jpg" alt="Tow truck service 17" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/18.jpg" alt="Tow truck service 18" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/19.jpg" alt="Tow truck service 19" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/20.jpg" alt="Tow truck service 20" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/21.jpg" alt="Tow truck service 21" />
+                    </div>
+                    <div class="photo-slide">
+                    <img src="assets/22.jpg" alt="Tow truck service 22" />
+                    </div>
+
+                </div>
+                <button class="photo-carousel-btn prev" id="prevPhoto">❮</button>
+                <button class="photo-carousel-btn next" id="nextPhoto">❯</button>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="contact-info-section">
+        <div class="section-container">
+            <h2 class="section-title fade-in">Contactează-ne</h2>
+            <div class="contact-intro fade-in">
+                <p>Te rugăm să ne contactezi pe oricare din numerele de telefon de mai jos sau prin email.</p>
+            </div>
+            <div class="contact-details">
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📍</div>
+                    <h3>Adresa</h3>
+                    <p>Str. Nicolae Grigorescu, Nr. 2A<br>Alba Iulia, jud. Alba, 510042<br>Romania</p>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:mirceabanciu200@yahoo.com">mirceabanciu200@yahoo.com</a></p>
+                </div>
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📞</div>
+                    <h3>Telefon</h3>
+                    <p><a href="tel:+40744778668">(+4) 0744 778 668</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="section-container">
+            <h2 class="section-title fade-in">Testimoniale</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">❝</div>
+                        <p>Mașina mi s-a stricat exact când avem nevoie de ea mai mult. Echipa de tractări m-a ajutat să duc mașina în service și m-au dus și unde aveam treabă.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">👨‍💼</div>
+                            <div class="author-info">
+                                <h4>Ionascu David</h4>
+                                <div class="stars">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">❝</div>
+                        <p>Nu m-am gândit niciodată la situația ca voi rămâne blocată pe autostradă cu mașina. Din fericire am fost servită rapid și eficient de acești oameni superbi!</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">👩‍💼</div>
+                            <div class="author-info">
+                                <h4>Mihai Babiaru</h4>
+                                <div class="stars">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">❝</div>
+                        <p>Cel mai mult mi-a plăcut că ați avut soluții la orice problemă pe care am întâmpinat-o. Mulțumesc mult!</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">👨‍🔧</div>
+                            <div class="author-info">
+                                <h4>Marius</h4>
+                                <div class="stars">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer" id="contact">
@@ -149,6 +1119,125 @@
         </div>
     </footer>
 
-     <script src="home/home.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Auto-advance carousel
+        setInterval(nextSlide, 5000);
+
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Fade in animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Photo Carousel functionality
+        let currentPhotoSlide = 0;
+        const photoSlides = document.querySelectorAll('.photo-slide');
+        const photoDots = document.querySelectorAll('.photo-dot');
+        const prevPhotoBtn = document.getElementById('prevPhoto');
+        const nextPhotoBtn = document.getElementById('nextPhoto');
+
+        function showPhotoSlide(index) {
+            photoSlides.forEach(slide => slide.classList.remove('active'));
+            photoDots.forEach(dot => dot.classList.remove('active'));
+            
+            photoSlides[index].classList.add('active');
+            photoDots[index].classList.add('active');
+        }
+
+        function nextPhotoSlide() {
+            currentPhotoSlide = (currentPhotoSlide + 1) % photoSlides.length;
+            showPhotoSlide(currentPhotoSlide);
+        }
+
+        function prevPhotoSlide() {
+            currentPhotoSlide = (currentPhotoSlide - 1 + photoSlides.length) % photoSlides.length;
+            showPhotoSlide(currentPhotoSlide);
+        }
+
+        // Photo carousel auto-advance
+        setInterval(nextPhotoSlide, 4000);
+
+        // Photo carousel navigation
+        nextPhotoBtn.addEventListener('click', nextPhotoSlide);
+        prevPhotoBtn.addEventListener('click', prevPhotoSlide);
+
+        // Photo dot navigation
+        photoDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentPhotoSlide = index;
+                showPhotoSlide(currentPhotoSlide);
+            });
+        });
+    </script>
 </body>
 </html>
