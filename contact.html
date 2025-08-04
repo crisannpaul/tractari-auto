@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact și Localizare - AB STAR GRUP S.R.L.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e74c3c;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #e74c3c;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #e74c3c;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .contact-hero {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.95), rgba(192, 57, 43, 0.95)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e74c3c" width="1200" height="600"/><defs><pattern id="contact-pattern" width="60" height="60" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="20" fill="none" stroke="%23c0392b" stroke-width="2" opacity="0.3"/><circle cx="30" cy="30" r="3" fill="%23c0392b" opacity="0.4"/></pattern></defs><rect width="100%" height="100%" fill="url(%23contact-pattern)"/></svg>') center/cover;
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.1) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Contact Information Card */
+        .contact-info-card {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .contact-info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(231, 76, 60, 0.15);
+        }
+
+        .card-title {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .title-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .contact-item:hover {
+            border-color: #e74c3c;
+            background: linear-gradient(135deg, #fff, #f8f9fa);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        .contact-value a {
+            color: #e74c3c;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: #c0392b;
+            transform: scale(1.05);
+            display: inline-block;
+        }
+
+        .company-name {
+            color: #e74c3c;
+            font-weight: 700;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .map-section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(231, 76, 60, 0.15);
+        }
+
+        .map-header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(231, 76, 60, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .map-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+            color: #e74c3c;
+        }
+
+        .map-address {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .map-container {
+            height: 730px;
+            position: relative;
+            background: linear-gradient(135deg, #bdc3c7, #95a5a6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+        }
+
+        .map-placeholder {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .map-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .map-link {
+            background: rgba(231, 76, 60, 0.9);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .map-link:hover {
+            background: #e74c3c;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Emergency Contact Section */
+        .emergency-section {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 4rem 3rem;
+            border-radius: 25px;
+            text-align: center;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .emergency-section::before {
+            content: '🚨';
+            position: absolute;
+            font-size: 12rem;
+            top: -3rem;
+            right: -3rem;
+            opacity: 0.1;
+            animation: emergencyPulse 3s infinite;
+        }
+
+        @keyframes emergencyPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.1; }
+            50% { transform: scale(1.1) rotate(5deg); opacity: 0.2; }
+        }
+
+        .emergency-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .emergency-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .emergency-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .emergency-phone {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 3px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .emergency-phone:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.05);
+            border-color: rgba(255,255,255,0.6);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Working Hours Section */
+        .hours-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            margin-top: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hours-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+
+        .hours-section h3 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .hours-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .hours-text {
+            font-size: 1.4rem;
+            color: #27ae60;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hours-description {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Animation for cards */
+        .contact-info-card, .map-section {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .contact-info-card { animation-delay: 0.1s; }
+        .map-section { animation-delay: 0.2s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 968px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .main-content {
+                padding: 60px 1rem;
+            }
+
+            .contact-info-card {
+                padding: 2rem;
+            }
+
+            .card-title {
+                font-size: 1.8rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-item:hover {
+                transform: translateY(-5px);
+            }
+
+            .map-header {
+                padding: 1.5rem;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+
+            .emergency-section {
+                padding: 3rem 2rem;
+            }
+
+            .emergency-section h2 {
+                font-size: 2.2rem;
+            }
+
+            .emergency-phone {
+                font-size: 1.8rem;
+                padding: 1rem 2rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .contact-info-card {
+                padding: 1.5rem;
+            }
+
+            .contact-item {
+                padding: 1rem;
+            }
+
+            .emergency-phone {
+                font-size: 1.5rem;
+                padding: 0.8rem 1.5rem;
+            }
+
+            .hours-section {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">AB STAR GRUP</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Acasă</a></li>
+                <li><a href="services.html">Servicii</a></li>
+                <li><a href="parc_auto.html">Parc Auto</a></li>
+                <li><a href="prices.html">Tarife</a></li>
+                <li><a href="contact.html" style="color: #c0392b;">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="hero-content">
+            <h1>Contactează-ne Oricând</h1>
+            <p>Te rugăm să ne contactezi pe oricare din numerele de telefon de mai jos sau prin email. Suntem disponibili 24/7 pentru urgențele tale!</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Contact Grid -->
+        <div class="contact-grid">
+            <!-- Contact Information Card -->
+            <div class="contact-info-card">
+                <h2 class="card-title">
+                    <div class="title-icon">📞</div>
+                    Informații de Contact
+                </h2>
+
+                <!-- Company Name -->
+                <div class="contact-item">
+                    <div class="contact-icon">🏢</div>
+                    <div class="contact-details">
+                        <div class="contact-label">Companie</div>
+                        <div class="contact-value">
+                            <span class="company-name">S.C. AB Star Grup S.R.L.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Address -->
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <div class="contact-label">Adresă</div>
+                        <div class="contact-value">
+                            Str. Nicolae Grigorescu, Nr. 2A<br>
+                            Alba Iulia, jud. Alba, 510042<br>
+                            România
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-details">
+                        <div class="contact-label">Telefon</div>
+                        <div class="contact-value">
+                            <a href="tel:+40744778668">(+4) 0744 778 668</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-details">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">
+                            <a href="mailto:mirceabanciu2000@yahoo.com">mirceabanciu2000@yahoo.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="map-section">
+                <div class="map-header">
+                    <h3>📍 Locația Noastră</h3>
+                    <div class="map-address">Alba Iulia, Județul Alba</div>
+                </div>
+                <div class="map-container" style="padding: 0; margin: 0;">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2737.9421292539355!2d23.57735261597064!3d46.06809497911262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474ece843b8717d7%3A0xdafe1b579c9d198d!2sStrada%20Nicolae%20Grigorescu%202A%2C%20Alba%20Iulia%20510042%2C%20Romania!5e0!3m2!1sen!2sro!4v1669200232431!5m2!1sen!2sro"
+                    width="100%"
+                    height="100%"
+                    style="border:0; display: block;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+</div>
+
+
+            </div>
+        </div>
+
+        <!-- Working Hours -->
+        <section class="hours-section">
+            <h3>
+                <div class="hours-icon">🕒</div>
+                Program de Lucru
+            </h3>
+            <div class="hours-text">24 ORE / 7 ZILE DIN SĂPTĂMÂNĂ</div>
+            <div class="hours-description">
+                Serviciile noastre de tractare și asistență rutieră sunt disponibile non-stop, în fiecare zi a anului. 
+                Indiferent de ora sau ziua, echipa AB STAR GRUP este pregătită să vă ajute în situații de urgență.
+            </div>
+        </section>
+
+        <!-- Emergency Contact Section -->
+        <section class="emergency-section">
+            <div class="emergency-content">
+                <h2>🚨 Urgență? Sunați Acum!</h2>
+                <p>Pentru situații de urgență, tractări și asistență rutieră imediată, nu ezitați să ne contactați. Răspundem rapid și profesional!</p>
+                <a href="tel:+40744778668" class="emergency-phone">📞 0744 778 668</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling animation for elements coming into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all contact cards
+        document.querySelectorAll('.contact-info-card, .map-section').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Enhanced hover effects for contact items
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const icon = item.querySelector('.contact-icon');
+                icon.style.transform = 'scale(1.1) rotate(5deg)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                const icon = item.querySelector('.contact-icon');
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // Phone number and email click tracking
+        document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"]').forEach(link => {
+            link.addEventListener('click', () => {
+                console.log('Contact method used:', link.href);
+                // Add analytics tracking here if needed
+            });
+        });
+
+        // Add navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Add copy to clipboard functionality for contact information
+        function copyToClipboard(text, element) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopyFeedback(element);
+                });
+            } else {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showCopyFeedback(element);
+            }
+        }
+
+        function showCopyFeedback(element) {
+            const originalText = element.textContent;
+            element.textContent = '✓ Copiat!';
+            element.style.color = '#27ae60';
+            
+            setTimeout(() => {
+                element.textContent = originalText;
+                element.style.color = '';
+            }, 2000);
+        }
+
+        // Add double-click to copy functionality
+        document.querySelectorAll('.contact-value').forEach(item => {
+            item.addEventListener('dblclick', (e) => {
+                const text = item.textContent.trim();
+                copyToClipboard(text, item);
+                e.preventDefault();
+            });
+            
+            // Add title attribute to indicate copy functionality
+            item.title = 'Dublu-click pentru a copia';
+        });
+
+        // Map link analytics
+        document.querySelector('.map-link').addEventListener('click', () => {
+            console.log('Google Maps link opened');
+            // Add analytics tracking here if needed
+        });
+
+        // Emergency phone special effects
+        const emergencyPhone = document.querySelector('.emergency-phone');
+        emergencyPhone.addEventListener('mouseenter', () => {
+            emergencyPhone.style.animation = 'emergencyPulse 0.5s infinite';
+        });
+
+        emergencyPhone.addEventListener('mouseleave', () => {
+            emergencyPhone.style.animation = '';
+        });
+
+        // Add accessibility improvements
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const focusedElement = document.activeElement;
+                if (focusedElement.classList.contains('map-link') || focusedElement.href) {
+                    focusedElement.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
