@@ -79,11 +79,26 @@
             width: 100%;
         }
 
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+
         /* Hero Section */
         .services-hero {
             background: linear-gradient(135deg, rgba(231, 76, 60, 0.9), rgba(192, 57, 43, 0.9)), 
                         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e74c3c" width="1200" height="600"/><path fill="%23c0392b" d="M0 300L50 325C100 350 200 400 300 425C400 450 500 450 600 425C700 400 800 350 900 325C1000 300 1100 300 1150 300L1200 300V600H1150C1100 600 1000 600 900 600C800 600 700 600 600 600C500 600 400 600 300 600C200 600 100 600 50 600H0V300Z"/></svg>') center/cover;
-            padding: 120px 0 80px;
+            padding: 200px 0 80px;
             text-align: center;
             color: white;
             position: relative;
@@ -262,7 +277,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-            height: 400px;
+            height: 600px;
             background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(192, 57, 43, 0.1));
             display: flex;
             align-items: center;
@@ -291,16 +306,7 @@
             overflow: hidden;
         }
 
-        .contact-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(231, 76, 60, 0.1) 0%, transparent 70%);
-            animation: float 6s ease-in-out infinite;
-        }
+      
 
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -368,6 +374,29 @@
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: start;
+                align-items: center;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
             .hero-content h1 {
                 font-size: 2.2rem;
             }
@@ -430,13 +459,17 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">AB STAR GRUP</a>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html">Acasă</a></li>
                 <li><a href="services.html" style="color: #c0392b;">Servicii</a></li>
                 <li><a href="parc_auto.html">Parc Auto</a></li>
                 <li><a href="prices.html">Tarife</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <div class="mobile-menu" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
         </div>
     </nav>
 
@@ -515,6 +548,13 @@
     </main>
 
     <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+
         // Smooth scrolling animation for elements coming into view
         const observerOptions = {
             threshold: 0.1,
