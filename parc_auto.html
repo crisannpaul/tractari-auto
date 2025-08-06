@@ -195,10 +195,25 @@
             color: #e74c3c;
             font-weight: 700;
         }
-        
+
+        .vehicle-body {
+            display: flex;
+            flex-direction: row;
+
+        }
+
+        .vehicle-body .carousel-container {
+            flex: 1;
+            max-width: 50%;
+        }
+
+        .vehicle-body .vehicle-specs {
+            flex: 1;
+        }
+
 
         /* Vehicle Cards */
-        .vehicles-grid {
+         .vehicles-grid {
             display: grid;
             gap: 3rem;
             margin-top: 3rem;
@@ -211,7 +226,10 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             transition: all 0.4s ease;
             position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
         }
+
 
         .vehicle-card:hover {
             transform: translateY(-10px);
@@ -260,7 +278,7 @@
         /* Carousel Styles */
         .carousel-container {
             position: relative;
-            height: 700px;
+            height: 400px;
             overflow: hidden;
             background: #f8f9fa;
         }
@@ -472,6 +490,16 @@
                 padding: 60px 1rem;
             }
 
+             .vehicle-body {
+                flex-direction: column;
+                
+            }
+
+            .vehicle-body .carousel-container,
+            .vehicle-body .vehicle-specs {
+                max-width: 100%;
+            }
+
             .vehicles-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -571,6 +599,7 @@
                     <h3 class="vehicle-name">Scania R620 „GUNFIGHTER"</h3>
                     <p class="vehicle-subtitle">Camion de recuperare premium</p>
                 </div>
+                <div class="vehicle-body">
                 <div class="carousel-container">
                     <div class="carousel-slides" data-vehicle="scania">
                         <div class="carousel-slide">
@@ -620,6 +649,7 @@
                     </div>
                 </div>
             </div>
+            </div>
 
             <!-- Mercedes Captain -->
             <div class="vehicle-card">
@@ -627,6 +657,7 @@
                     <h3 class="vehicle-name">Mercedes Actros Captain</h3>
                     <p class="vehicle-subtitle">Camion de recuperare profesional</p>
                 </div>
+                <div class="vehicle-body">
                 <div class="carousel-container">
                     <div class="carousel-slides" data-vehicle="merc-captain">
                         <div class="carousel-slide">
@@ -665,13 +696,14 @@
                     </div>
                 </div>
             </div>
-
+            </div>
             <!-- Volvo FM 410 EEV -->
             <div class="vehicle-card">
                 <div class="vehicle-header">
                     <h3 class="vehicle-name">Volvo FM 410 EEV</h3>
                     <p class="vehicle-subtitle">Camion eco-friendly</p>
                 </div>
+                <div class="vehicle-body">
                 <div class="carousel-container">
                     <div class="carousel-slides" data-vehicle="volvo410">
                         <div class="carousel-slide">
@@ -721,13 +753,14 @@
                     </div>
                 </div>
             </div>
-
+            </div>
             <!-- Mercedes Petronas -->
             <div class="vehicle-card">
                 <div class="vehicle-header">
                     <h3 class="vehicle-name">Mercedes Actros F1 Petronas</h3>
                     <p class="vehicle-subtitle">Camion de recuperare profesional</p>
                 </div>
+                <div class="vehicle-body">
                 <div class="carousel-container">
                     <div class="carousel-slides" data-vehicle="mercedes">
                         <div class="carousel-slide">
@@ -778,13 +811,14 @@
                     </div>
                 </div>
             </div>
-
+            </div>
             <!-- Volvo FH 500 4X2 -->
             <div class="vehicle-card">
                 <div class="vehicle-header">
                     <h3 class="vehicle-name">Volvo FH 500 6x4</h3>
                     <p class="vehicle-subtitle">Camion de recuperare modern</p>
                 </div>
+                <div class="vehicle-body">
                 <div class="carousel-container">
                     <div class="carousel-slides" data-vehicle="volvo500-6x4">
                         <div class="carousel-slide">
@@ -830,6 +864,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
 
           
