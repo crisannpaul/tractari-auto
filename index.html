@@ -12,23 +12,20 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
 
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.98);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
 
@@ -82,10 +79,6 @@
             width: 100%;
         }
 
-        .nav-menu a:hover {
-            color: #e74c3c;
-        }
-
         .mobile-menu {
             display: none;
             flex-direction: column;
@@ -102,7 +95,7 @@
 
         /* Hero Section with Carousel */
         .hero {
-            height: 100vh;
+            height: 90vh;
             position: relative;
             display: flex;
             align-items: center;
@@ -259,7 +252,7 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 4rem;
         }
@@ -314,6 +307,10 @@
             background: white;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-intro p{
+            text-align: left;
         }
 
         /* Features Section */
@@ -789,6 +786,8 @@
 
             .hero-content p {
                 font-size: 1rem;
+                text-align: justify;
+                max-width: 400px;
             }
 
             .features-container {
@@ -834,6 +833,10 @@
                 font-size: 2rem;
             }
 
+             .hero-content p {
+                text-align: justify;
+            }
+
             .nav-container {
                 padding: 0 1rem;
             }
@@ -862,6 +865,7 @@
                 <li><a href="index.html" style="color: #c0392b;">Acasă</a></li>
                 <li><a href="services.html">Servicii</a></li>
                 <li><a href="parc_auto.html">Parc Auto</a></li>
+                <li><a href="inchiriere_trailer.html">Închiriere Trailer</a></li>
                 <li><a href="prices.html">Tarife</a></li>
                 <li><a href="contact.html" >Contact</a></li>
             </ul>
@@ -913,11 +917,8 @@
                     <h3>Asistență Rutieră</h3>
                     
                 </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🚙</div>
-                    <h3>Tractări Autoturisme</h3>
-                    
-                </div>
+                   
+    
                 <div class="service-card fade-in">
                     <div class="service-icon">🚚</div>
                     <h3>Tractări Camioane</h3>
@@ -953,11 +954,7 @@
                     <h3>Automacara</h3>
                     
                 </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">📸</div>
-                    <h3>Constatarea Avariilor</h3>
-                   
-                </div>
+                
             </div>
         </div>
     </section>

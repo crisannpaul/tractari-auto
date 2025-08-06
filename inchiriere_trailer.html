@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parc Auto Specializat - AB STAR GRUP S.R.L.</title>
+    <title>Închiriere Trailer - AB STAR GRUP S.R.L.</title>
     <style>
         * {
             margin: 0;
@@ -93,11 +93,10 @@
             transition: 0.3s;
         }
 
-
         /* Hero Section */
-        .fleet-hero {
+        .rental-hero {
             background: linear-gradient(135deg, rgba(231, 76, 60, 0.95), rgba(192, 57, 43, 0.95)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e74c3c" width="1200" height="600"/><defs><pattern id="trucks" width="120" height="60" patternUnits="userSpaceOnUse"><rect width="120" height="60" fill="%23c0392b" opacity="0.1"/><rect x="10" y="20" width="40" height="15" fill="%23fff" opacity="0.1" rx="2"/><rect x="55" y="25" width="15" height="10" fill="%23fff" opacity="0.1" rx="1"/><circle cx="25" cy="45" r="5" fill="%23fff" opacity="0.1"/><circle cx="60" cy="45" r="4" fill="%23fff" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23trucks)"/></svg>') center/cover;
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e74c3c" width="1200" height="600"/><defs><pattern id="trailers" width="120" height="60" patternUnits="userSpaceOnUse"><rect width="120" height="60" fill="%23c0392b" opacity="0.1"/><rect x="15" y="15" width="50" height="25" fill="%23fff" opacity="0.1" rx="3"/><rect x="70" y="25" width="25" height="15" fill="%23fff" opacity="0.1" rx="2"/><circle cx="25" cy="50" r="4" fill="%23fff" opacity="0.1"/><circle cx="55" cy="50" r="4" fill="%23fff" opacity="0.1"/><circle cx="85" cy="50" r="4" fill="%23fff" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23trailers)"/></svg>') center/cover;
             padding: 200px 0 80px;
             text-align: center;
             color: white;
@@ -105,7 +104,7 @@
             overflow: hidden;
         }
 
-        .fleet-hero::before {
+        .rental-hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -150,7 +149,6 @@
             margin-right: auto;
             line-height: 1.6;
             opacity: 0.95;
-          
         }
 
         /* Main Content */
@@ -194,16 +192,73 @@
             color: #e74c3c;
             font-weight: 700;
         }
-        
 
-        /* Vehicle Cards */
-        .vehicles-grid {
+        /* Rental Services Section */
+        .rental-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(231, 76, 60, 0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Trailer Cards */
+        .trailers-grid {
             display: grid;
             gap: 3rem;
             margin-top: 3rem;
         }
 
-        .vehicle-card {
+        .trailer-card {
             background: white;
             border-radius: 25px;
             overflow: hidden;
@@ -212,12 +267,12 @@
             position: relative;
         }
 
-        .vehicle-card:hover {
+        .trailer-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 25px 60px rgba(231, 76, 60, 0.15);
         }
 
-        .vehicle-header {
+        .trailer-header {
             background: linear-gradient(135deg, #2c3e50, #34495e);
             color: white;
             padding: 2rem;
@@ -226,21 +281,7 @@
             overflow: hidden;
         }
 
-        .vehicle-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .vehicle-name {
+        .trailer-name {
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
@@ -249,7 +290,7 @@
             color: #e74c3c;
         }
 
-        .vehicle-subtitle {
+        .trailer-subtitle {
             font-size: 1rem;
             opacity: 0.9;
             position: relative;
@@ -283,11 +324,10 @@
 
         .carousel-slide img {
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: cover;
             display: block;
         }
-
 
         .slide-placeholder {
             width: 100%;
@@ -372,8 +412,8 @@
             transform: scale(1.2);
         }
 
-        /* Vehicle Specs */
-        .vehicle-specs {
+        /* Trailer Specs */
+        .trailer-specs {
             padding: 2rem;
         }
 
@@ -416,15 +456,59 @@
             color: #e74c3c;
         }
 
-        /* Animation for vehicle cards */
-        .vehicle-card {
+        /* Contact Section */
+        .contact-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .contact-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Animation for cards */
+        .trailer-card, .service-card {
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 0.6s ease-out forwards;
         }
 
-        .vehicle-card:nth-child(odd) { animation-delay: 0.1s; }
-        .vehicle-card:nth-child(even) { animation-delay: 0.2s; }
+        .trailer-card:nth-child(odd), .service-card:nth-child(odd) { 
+            animation-delay: 0.1s; 
+        }
+        .trailer-card:nth-child(even), .service-card:nth-child(even) { 
+            animation-delay: 0.2s; 
+        }
 
         @keyframes fadeInUp {
             to {
@@ -464,23 +548,22 @@
 
             .hero-content p {
                 font-size: 1.1rem;
-                text-align: justify;
             }
 
             .main-content {
                 padding: 60px 1rem;
             }
 
-            .vehicles-grid {
+            .trailers-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            .intro-section {
+            .intro-section, .contact-section {
                 padding: 2rem;
             }
 
-            .vehicle-specs {
+            .trailer-specs {
                 padding: 1.5rem;
             }
 
@@ -489,11 +572,15 @@
             }
 
             .carousel-container {
-                height: 250px;
+                height: 300px;
             }
 
             .nav-container {
                 padding: 0 1rem;
+            }
+
+            .rental-services {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -502,15 +589,11 @@
                 font-size: 1.8rem;
             }
 
-            .hero-content p {
-                text-align: justify;
-            }
-
-            .vehicle-header {
+            .trailer-header {
                 padding: 1.5rem;
             }
 
-            .vehicle-name {
+            .trailer-name {
                 font-size: 1.5rem;
             }
 
@@ -519,7 +602,7 @@
             }
 
             .carousel-container {
-                height: 200px;
+                height: 250px;
             }
         }
     </style>
@@ -530,10 +613,10 @@
         <div class="nav-container">
             <a href="#" class="logo">AB STAR GRUP</a>
             <ul class="nav-menu" id="nav-menu">
-                 <li><a href="index.html">Acasă</a></li>
+                <li><a href="index.html">Acasă</a></li>
                 <li><a href="services.html">Servicii</a></li>
-                <li><a href="parc_auto.html" style="color: #c0392b;">Parc Auto</a></li>
-                <li><a href="inchiriere_trailer.html">Închiriere Trailer</a></li>
+                <li><a href="parc_auto.html">Parc Auto</a></li>
+                <li><a href="inchiriere_trailer.html" style="color: #c0392b;">Închiriere Trailer</a></li>
                 <li><a href="prices.html">Tarife</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -546,10 +629,10 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="fleet-hero">
+    <section class="rental-hero">
         <div class="hero-content">
-            <h1>Parc Auto Specializat și Modern</h1>
-            <p>Deținem auto-speciale de ultimă generație, echipate cu tehnologie avansată pentru servicii de tractare și transport în condiții de siguranță maximă</p>
+            <h1>Închiriere Trailer Profesional</h1>
+            <p>Oferim servicii de închiriere trailer pentru transport marfă cu echipamente moderne și siguranță maximă pentru afacerea dumneavoastră</p>
         </div>
     </section>
 
@@ -558,280 +641,95 @@
         <!-- Introduction Section -->
         <section class="intro-section">
             <div class="intro-text">
-                <p>Deținem auto-speciale <span class="brand-highlight">Mercedes, Scania, Volvo</span> echipate corespunzător activității de tractare/transport în condiții de siguranță maximă. În orice zi și la orice oră suntem pregătiți să răspundem tuturor urgențelor auto care se pot ivi, oferindu-vă o gamă completă de servicii de tractare.</p>
+                <p>Compania <span class="brand-highlight">AB STAR GRUP</span> pune la dispoziția clienților săi servicii profesionale de închiriere trailer pentru diverse nevoi de transport. Dispunem de o flotă modernă de trailere echipate corespunzător pentru transportul în siguranță al mărfurilor dumneavoastră, cu toate documentele și asigurările necesare.</p>
             </div>
         </section>
 
-        <!-- Vehicles Grid -->
-        <div class="vehicles-grid">
-            <!-- Scania R620 GUNFIGHTER -->
-            <div class="vehicle-card">
-                <div class="vehicle-header">
-                    <h3 class="vehicle-name">Scania R620 „GUNFIGHTER"</h3>
-                    <p class="vehicle-subtitle">Camion de recuperare premium</p>
+        <!-- Rental Services -->
+        <div class="rental-services">
+            <div class="service-card">
+                <div class="service-icon">🚛</div>
+                <h3>Transport Marfă</h3>
+                <p>Trailere specializate pentru transportul eficient și sigur al diverselor tipuri de mărfuri</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>Documentație Completă</h3>
+                <p>Toate documentele necesare și asigurările incluse în serviciul de închiriere</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⏰</div>
+                <h3>Disponibilitate 24/7</h3>
+                <p>Servicii de închiriere disponibile non-stop pentru urgențele dumneavoastră</p>
+            </div>
+        </div>
+
+        <!-- Trailers Grid -->
+        <div class="trailers-grid">
+            <!-- Trailer Rental -->
+            <div class="trailer-card">
+                <div class="trailer-header">
+                    <h3 class="trailer-name">Trailer Gondola Kalepar</h3>
+                    <p class="trailer-subtitle">Echipament profesional de transport</p>
                 </div>
                 <div class="carousel-container">
-                    <div class="carousel-slides" data-vehicle="scania">
+                    <div class="carousel-slides" data-vehicle="rental-trailer">
                         <div class="carousel-slide">
-                            <img src="assets/gunfire/1.jpg" alt="Scania Truck">
+                            <img src="assets/kalepar/1.jpg" alt="Kalepar Engine">
                         </div>
                         <div class="carousel-slide">
-                            <img src="assets/gunfire/2.jpg" alt="Scania Interior">
+                            <img src="assets/kalepar/2.jpg" alt="Kalepar Engine">
                         </div>
                         <div class="carousel-slide">
-                            <img src="assets/gunfire/3.jpg" alt="Scania Engine">
+                            <img src="assets/kalepar/3.jpg" alt="Kalepar Engine">
                         </div>
                         <div class="carousel-slide">
-                            <img src="assets/gunfire/4.jpg" alt="Scania Engine">
+                            <img src="assets/kalepar/4.jpg" alt="Kalepar Engine">
                         </div>
                     </div>
-                    <button class="carousel-nav carousel-prev" onclick="previousSlide('scania')">‹</button>
-                    <button class="carousel-nav carousel-next" onclick="nextSlide('scania')">›</button>
+                    <button class="carousel-nav carousel-prev" onclick="previousSlide('rental-trailer')">‹</button>
+                    <button class="carousel-nav carousel-next" onclick="nextSlide('rental-trailer')">›</button>
                     <div class="carousel-dots">
-                        <div class="dot active" onclick="currentSlide('scania', 0)"></div>
-                        <div class="dot" onclick="currentSlide('scania', 1)"></div>
-                        <div class="dot" onclick="currentSlide('scania', 2)"></div>
-                        <div class="dot" onclick="currentSlide('scania', 3)"></div>
+                        <div class="dot active" onclick="currentSlide('rental-trailer', 0)"></div>
+                        <div class="dot" onclick="currentSlide('rental-trailer', 1)"></div>
+                        <div class="dot" onclick="currentSlide('rental-trailer', 2)"></div>
+                        <div class="dot" onclick="currentSlide('rental-trailer', 3)"></div>
                     </div>
                 </div>
-                <div class="vehicle-specs">
+                <div class="trailer-specs">
                     <div class="specs-grid">
                         <div class="spec-item">
-                            <div class="spec-label">An Fabricație</div>
-                            <div class="spec-value spec-highlight">2011</div>
+                            <div class="spec-label">Capacitate Maximă</div>
+                            <div class="spec-value spec-highlight">24 tone</div>
                         </div>
                         <div class="spec-item">
-                            <div class="spec-label">Standard Euro</div>
-                            <div class="spec-value">EURO 5</div>
+                            <div class="spec-label">Lungime Trailer</div>
+                            <div class="spec-value">13.6 m</div>
                         </div>
                         <div class="spec-item">
-                            <div class="spec-label">Putere</div>
-                            <div class="spec-value spec-highlight">620 CP</div>
+                            <div class="spec-label">Lățime</div>
+                            <div class="spec-value">2.48 m</div>
                         </div>
                         <div class="spec-item">
-                            <div class="spec-label">Echipament</div>
-                            <div class="spec-value">2020</div>
+                            <div class="spec-label">Înălțime</div>
+                            <div class="spec-value">4.00 m</div>
                         </div>
                         <div class="spec-item">
-                            <div class="spec-label">Trolii</div>
-                            <div class="spec-value spec-highlight">2 x 12/15 to</div>
+                            <div class="spec-label">Tip Platformă</div>
+                            <div class="spec-value spec-highlight">Prelată</div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Mercedes Captain -->
-            <div class="vehicle-card">
-                <div class="vehicle-header">
-                    <h3 class="vehicle-name">Mercedes Actros Captain</h3>
-                    <p class="vehicle-subtitle">Camion de recuperare profesional</p>
-                </div>
-                <div class="carousel-container">
-                    <div class="carousel-slides" data-vehicle="merc-captain">
-                        <div class="carousel-slide">
-                            <img src="assets/merc_captain/1.jpg" alt="Volvo Engine">
-                        </div>
-                         <div class="carousel-slide">
-                            <img src="assets/merc_captain/2.jpg" alt="Volvo Engine">
-                        </div>
-                         <div class="carousel-slide">
-                            <img src="assets/merc_captain/3.jpg" alt="Volvo Engine">
-                        </div>
-                      
-                    </div>
-                    <button class="carousel-nav carousel-prev" onclick="previousSlide('merc-captain')">‹</button>
-                    <button class="carousel-nav carousel-next" onclick="nextSlide('merc-captain')">›</button>
-                    <div class="carousel-dots">
-                        <div class="dot active" onclick="currentSlide('merc-captain', 0)"></div>
-                        <div class="dot" onclick="currentSlide('merc-captain', 1)"></div>
-                        <div class="dot" onclick="currentSlide('merc-captain', 2)"></div>
-                    </div>
-                </div>
-                <div class="vehicle-specs">
-                    <div class="specs-grid">
-                        <div class="spec-item">
-                            <div class="spec-label">An Fabricație</div>
-                            <div class="spec-value spec-highlight">2019</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Standard Euro</div>
-                            <div class="spec-value">EURO 6</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Putere</div>
-                            <div class="spec-value spec-highlight">390 CP</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Volvo FM 410 EEV -->
-            <div class="vehicle-card">
-                <div class="vehicle-header">
-                    <h3 class="vehicle-name">Volvo FM 410 EEV</h3>
-                    <p class="vehicle-subtitle">Camion eco-friendly</p>
-                </div>
-                <div class="carousel-container">
-                    <div class="carousel-slides" data-vehicle="volvo410">
-                        <div class="carousel-slide">
-                            <img src="assets/volvoFM/1.jpg" alt="Volvo Engine">
-                        </div>
-                         <div class="carousel-slide">
-                            <img src="assets/volvoFM/2.jpg" alt="Volvo Engine">
-                        </div>
-                         <div class="carousel-slide">
-                            <img src="assets/volvoFM/3.jpg" alt="Volvo Engine">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="assets/volvoFM/4.jpg" alt="Volvo Engine">
-                        </div>
-                    </div>
-                    <button class="carousel-nav carousel-prev" onclick="previousSlide('volvo410')">‹</button>
-                    <button class="carousel-nav carousel-next" onclick="nextSlide('volvo410')">›</button>
-                    <div class="carousel-dots">
-                        <div class="dot active" onclick="currentSlide('volvo410', 0)"></div>
-                        <div class="dot" onclick="currentSlide('volvo410', 1)"></div>
-                        <div class="dot" onclick="currentSlide('volvo410', 2)"></div>
-                        <div class="dot" onclick="currentSlide('volvo410', 3)"></div>
-                    </div>
-                </div>
-                <div class="vehicle-specs">
-                    <div class="specs-grid">
-                        <div class="spec-item">
-                            <div class="spec-label">An Fabricație</div>
-                            <div class="spec-value spec-highlight">2012</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Standard Euro</div>
-                            <div class="spec-value">EURO 5 EEV</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Putere</div>
-                            <div class="spec-value spec-highlight">410 CP</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Echipament</div>
-                            <div class="spec-value">2021</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Trolii</div>
-                            <div class="spec-value spec-highlight">2 x 8 to</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mercedes Petronas -->
-            <div class="vehicle-card">
-                <div class="vehicle-header">
-                    <h3 class="vehicle-name">Mercedes Actros F1 Petronas</h3>
-                    <p class="vehicle-subtitle">Camion de recuperare profesional</p>
-                </div>
-                <div class="carousel-container">
-                    <div class="carousel-slides" data-vehicle="mercedes">
-                        <div class="carousel-slide">
-                            <img src="assets/merc_petronas/1.jpg" alt="Mercedes Engine">
-                        </div>
-                         <div class="carousel-slide">
-                            <img src="assets/merc_petronas/2.jpg" alt="Mercedes Engine">
-                        </div>
-                         <div class="carousel-slide">
-                            <img src="assets/merc_petronas/3.jpg" alt="Mercedes Engine">
-                        </div>
-                         <div class="carousel-slide">
-                            <img src="assets/merc_petronas/4.jpg" alt="Mercedes Engine">
-                        </div>
-                         <div class="carousel-slide">
-                            <img src="assets/merc_petronas/5.jpg" alt="Mercedes Engine">
-                        </div>
-                         <div class="carousel-slide">
-                            <img src="assets/merc_petronas/6.jpg" alt="Mercedes Engine">
-                        </div>
-                    </div>
-                    <button class="carousel-nav carousel-prev" onclick="previousSlide('mercedes')">‹</button>
-                    <button class="carousel-nav carousel-next" onclick="nextSlide('mercedes')">›</button>
-                    <div class="carousel-dots">
-                        <div class="dot active" onclick="currentSlide('mercedes', 0)"></div>
-                        <div class="dot" onclick="currentSlide('mercedes', 1)"></div>
-                        <div class="dot" onclick="currentSlide('mercedes', 2)"></div>
-                        <div class="dot" onclick="currentSlide('mercedes', 3)"></div>
-                        <div class="dot" onclick="currentSlide('mercedes', 4)"></div>
-                        <div class="dot" onclick="currentSlide('mercedes', 5)"></div>
-                    </div>
-                </div>
-                <div class="vehicle-specs">
-                    <div class="specs-grid">
-                        <div class="spec-item">
-                            <div class="spec-label">An Fabricație</div>
-                            <div class="spec-value spec-highlight">2019</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Standard Euro</div>
-                            <div class="spec-value">EURO 6</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Putere</div>
-                            <div class="spec-value spec-highlight">430 CP</div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- Volvo FH 500 4X2 -->
-            <div class="vehicle-card">
-                <div class="vehicle-header">
-                    <h3 class="vehicle-name">Volvo FH 500 6x4</h3>
-                    <p class="vehicle-subtitle">Camion de recuperare modern</p>
-                </div>
-                <div class="carousel-container">
-                    <div class="carousel-slides" data-vehicle="volvo500-6x4">
-                        <div class="carousel-slide">
-                            <img src="assets/volvoFH500/1.jpg" alt="Volvo Engine">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="assets/volvoFH500/2.jpg" alt="Volvo Engine">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="assets/volvoFH500/3.jpg" alt="Volvo Engine">
-                        </div>
-                         
-                    </div>
-                    <button class="carousel-nav carousel-prev" onclick="previousSlide('volvo500-6x4')">‹</button>
-                    <button class="carousel-nav carousel-next" onclick="nextSlide('volvo500-6x4')">›</button>
-                    <div class="carousel-dots">
-                        <div class="dot active" onclick="currentSlide('volvo500-6x4', 0)"></div>
-                        <div class="dot" onclick="currentSlide('volvo500-6x4', 1)"></div>
-                        <div class="dot" onclick="currentSlide('volvo500-6x4', 2)"></div>
-                    </div>
-                </div>
-                <div class="vehicle-specs">
-                    <div class="specs-grid">
-                        <div class="spec-item">
-                            <div class="spec-label">An Fabricație</div>
-                            <div class="spec-value spec-highlight">05/2019</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Standard Euro</div>
-                            <div class="spec-value">EURO 6</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Putere</div>
-                            <div class="spec-value spec-highlight">500 CP</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Echipament</div>
-                            <div class="spec-value">2021</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Trolii</div>
-                            <div class="spec-value spec-highlight">2 x 8 to</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-          
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <h2>Solicitați o Ofertă Personalizată</h2>
+            <p>Pentru detalii despre tarife, disponibilitate și condiții de închiriere, contactați-ne acum.</p>
+            <br>
+            <a href="contact.html" class="contact-button">Contactează-ne Acum</a>
+        </section>
     </main>
 
     <script>
@@ -841,6 +739,7 @@
         mobileMenu.addEventListener('click', function() {
             navMenu.classList.toggle('active');
         });
+
         // Carousel functionality
         const carouselData = {};
 
@@ -888,7 +787,7 @@
             });
         }
 
-        // Auto-play functionality (optional)
+        // Auto-play functionality
         function startAutoPlay() {
             setInterval(() => {
                 Object.keys(carouselData).forEach(vehicleId => {
@@ -898,7 +797,7 @@
                         nextSlide(vehicleId);
                     }
                 });
-            }, 5000); // Change slide every 5 seconds
+            }, 4000); // Change slide every 4 seconds
         }
 
         // Start auto-play after page load
@@ -920,15 +819,14 @@
             });
         }, observerOptions);
 
-        // Observe all vehicle cards
-        document.querySelectorAll('.vehicle-card').forEach(card => {
+        // Observe all cards
+        document.querySelectorAll('.trailer-card, .service-card').forEach(card => {
             observer.observe(card);
         });
 
-        // Enhanced hover effects for vehicle cards
-        document.querySelectorAll('.vehicle-card').forEach(card => {
+        // Enhanced hover effects for trailer cards
+        document.querySelectorAll('.trailer-card').forEach(card => {
             card.addEventListener('mouseenter', () => {
-                // Add a subtle glow effect
                 card.style.boxShadow = '0 25px 60px rgba(231, 76, 60, 0.2), 0 0 30px rgba(231, 76, 60, 0.1)';
             });
             
@@ -1016,12 +914,32 @@
 
         // Add loading effect for placeholder images
         document.querySelectorAll('.slide-placeholder').forEach(placeholder => {
-            // Add a subtle animation to indicate the images are placeholders
             placeholder.style.cursor = 'pointer';
             placeholder.addEventListener('click', function() {
-                // Could add functionality to open a modal or gallery here
                 console.log('Image placeholder clicked - could open full gallery');
             });
+        });
+
+        // Service cards hover effects
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.service-icon');
+                icon.style.transform = 'rotate(10deg) scale(1.1)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.service-icon');
+                icon.style.transform = 'rotate(0deg) scale(1)';
+            });
+        });
+
+        // Contact button animation
+        document.querySelector('.contact-button').addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px) scale(1.05)';
+        });
+
+        document.querySelector('.contact-button').addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(-3px) scale(1)';
         });
     </script>
 </body>
