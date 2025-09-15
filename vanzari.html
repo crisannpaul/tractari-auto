@@ -233,6 +233,27 @@
             box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
         }
 
+        /* AutoLine partnership - wrapper styles (badge snippet remains unchanged) */
+        .autoline-dealer-title {
+            margin-top: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+        .autoline-partnership {
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .autoline-partnership-text {
+            max-width: 480px;
+            text-align: left;
+        }
+
         /* Vehicles Grid */
         .vehicles-grid {
             display: grid;
@@ -527,6 +548,24 @@
             <p>Vizitați profilul nostru pe AutoLine.ro pentru a vedea întreaga gamă de camioane de tractare disponibile, cu fotografii detaliate, specificații complete și prețuri actualizate.</p>
             <a href="https://autoline.ro/abstargrup/" target="_blank" class="autoline-btn">Vezi pe AutoLine.ro</a>
             <a href="tel:+40744778668" class="autoline-btn">Contactează-ne</a>
+
+            <div class="autoline-partnership">
+              <span style="all: unset !important; display: inline-block !important; width: 200px !important; height: 200px !important; flex: 0 0 200px !important; aspect-ratio: 1/1 !important;">
+                <span style="all: unset !important; display: inline-grid !important; justify-items: center !important; justify-content: center !important; align-content: center !important; width: 100% !important; height: 100% !important; aspect-ratio: 1/1 !important;">
+                  <a href="https://autoline.ro/abstargrup/" target="_blank" style="all: unset !important; grid-area: 1/1 !important; overflow: hidden !important; cursor: pointer !important; border-radius: 50% !important;">
+                    <img src="https://autoline.ro/ni/trusted-seller/1485281061410073211/badge.svg?project=1&locale=ro_ro&type=dealer" alt="" style="all: unset !important; display: block !important; height: 100% !important; width: 100% !important; aspect-ratio: 1 / 1 !important;">
+                  </a>
+                  <a href="https://autoline.ro/" target="_blank" style="all: unset !important; grid-area: 1/1 !important; overflow: hidden !important; cursor: pointer !important; margin-top: 23% !important; height: 12.9% !important;">
+                    <img src="https://autoline.ro/img/svg/trusted-dealer/logo/autoline.svg" alt="" style="all: unset !important; display: block !important; height: 100% !important; width: 100% !important;">
+                  </a>
+                </span>
+              </span>
+
+              <div class="autoline-partnership-text">
+                <p>Suntem dealer verificat pe AutoLine.ro. Pentru oferte actualizate și discuții directe, contactează dealerul pe AutoLine.</p>
+                <a href="https://autoline.ro/abstargrup/" target="_blank" class="autoline-btn">Contactează dealerul</a>
+              </div>
+            </div>
         </div>
 
         <!-- Featured Vehicles -->
@@ -589,7 +628,7 @@
             </div>
 
             <!-- Volvo FH13 -->
-            <div class="vehicle-card fade-in">
+            <!-- <div class="vehicle-card fade-in">
                 <div class="vehicle-image" style="background-image: url('assets/carousel4.jpeg.jpg')">
                     <div class="price-tag">129.900 EUR</div>
                 </div>
@@ -605,10 +644,10 @@
                     </ul>
                     <a href="tel:+40744778668" class="contact-dealer-btn">Contactează Dealer</a>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Mercedes-Benz Classic -->
-            <div class="vehicle-card fade-in">
+            <!-- <div class="vehicle-card fade-in">
                 <div class="vehicle-image" style="background-image: url('assets/carousel5.jpg')">
                     <div class="price-tag">140.000 EUR</div>
                 </div>
@@ -624,7 +663,7 @@
                     </ul>
                     <a href="tel:+40744778668" class="contact-dealer-btn">Contactează Dealer</a>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Placeholder Card - More Vehicles -->
             <div class="vehicle-card fade-in">
