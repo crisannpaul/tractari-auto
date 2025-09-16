@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tractari Auto - Servicii Profesionale 24/7</title>
     <link rel="icon" type="image/png" href="assets/site-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -40,15 +43,60 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #e74c3c;
+            position: relative;
+            display: inline-block;
+            font-family: 'Anton', 'Bebas Neue', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color: #e74c3c; /* red/orange foreground */
             text-decoration: none;
-            transition: transform 0.3s ease;
+            line-height: 1;
+            transform: skewX(-10deg);
+            transition: transform 0.2s ease, filter 0.2s ease;
+            /* blue offset "shadow" using site palette */
+            text-shadow:
+                1px 1px 0 #2c3e50,
+                2px 2px 0 #2c3e50,
+                3px 3px 0 #2c3e50,
+                4px 4px 0 #2c3e50;
+        }
+
+        /* diagonal yellow slash across the text */
+        .logo::before {
+            content: '';
+            position: absolute;
+            left: -2%;
+            right: -2%;
+            top: 48%;
+            height: 0.28em;
+            background: #ffea00; /* yellow */
+            transform: skewX(-20deg);
+            z-index: -1;
+            box-shadow: 0 2px 0 rgba(0,0,0,0.08);
+            opacity: 0.95;
+        }
+
+        /* small sparkle to the right */
+        .logo::after {
+            content: '✦';
+            position: absolute;
+            right: -1.2em;
+            top: -0.2em;
+            font-size: 0.9em;
+            color: #ffea00;
+            transform: rotate(10deg) skewX(10deg);
+            text-shadow: 1px 1px 0 #2c3e50, 2px 2px 0 #2c3e50;
         }
 
         .logo:hover {
-            transform: scale(1.05);
+            transform: skewX(-10deg) translateY(-1px);
+            filter: drop-shadow(0 6px 8px rgba(0,0,0,0.15));
+        }
+
+        @media (max-width: 768px) {
+            .logo { font-size: 1.6rem; }
         }
 
         .nav-menu {
@@ -861,7 +909,7 @@
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">AB STAR GRUP</a>
+            <a href="index.html" class="logo">AB STAR GRUP</a>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html" style="color: #c0392b;">Acasă</a></li>
                 <li><a href="services.html">Servicii</a></li>

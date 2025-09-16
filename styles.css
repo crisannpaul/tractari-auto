@@ -1,12 +1,80 @@
-* {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap');
 
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base body defaults (kept very light so pages with inline styles remain in control) */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* Brand logo styling to resemble provided reference
+   - Heavy condensed font (Anton)
+   - Forward-lean italic via skew
+   - Blue fill with strong red offset "shadow"
+   - Diagonal yellow slash across text
+   - Small sparkle to the right
+*/
+.logo {
+  position: relative !important;
+  display: inline-block !important;
+  font-family: 'Anton', 'Bebas Neue', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif !important;
+  font-size: 2rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.03em !important;
+  text-transform: uppercase !important;
+  color: #e74c3c !important; /* red foreground */
+  text-decoration: none !important;
+  line-height: 1 !important;
+  z-index: 0 !important;
+  transform: skewX(-10deg) !important;
+  transition: transform 0.2s ease, filter 0.2s ease !important;
+  text-shadow:
+    1px 1px 0 #2c3e50,
+    2px 2px 0 #2c3e50,
+    3px 3px 0 #2c3e50,
+    4px 4px 0 #2c3e50 !important; /* bold red offset */
+}
+
+/* Diagonal yellow slash */
+.logo::before {
+  content: '' !important;
+  position: absolute !important;
+  left: -2% !important;
+  right: -2% !important;
+  top: 48% !important;
+  height: 0.28em !important;
+  background: #ffea00 !important; /* yellow */
+  transform: skewX(-20deg) !important;
+  z-index: -1 !important;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.08) !important;
+  opacity: 0.95 !important;
+}
+
+/* Small sparkle */
+.logo::after {
+  content: '✦' !important;
+  position: absolute !important;
+  right: -1.2em !important;
+  top: -0.2em !important;
+  font-size: 0.9em !important;
+  color: #ffea00 !important;
+  transform: rotate(10deg) skewX(10deg) !important;
+  text-shadow: 1px 1px 0 #2c3e50, 2px 2px 0 #2c3e50 !important;
+}
+
+.logo:hover {
+  transform: skewX(-10deg) translateY(-1px) !important;
+  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.15)) !important;
+}
+
+@media (max-width: 768px) {
+  .logo { font-size: 1.6rem !important; }
+}
