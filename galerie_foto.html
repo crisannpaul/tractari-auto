@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerie Foto - AB STAR GRUP</title>
+  <link rel="icon" type="image/png" href="assets/site-logo.png">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height:1.6; color:#333; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); }
+.navbar { position: fixed; top:0; width:100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); z-index:1000; padding:1rem 0; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+.nav-container { max-width: 1200px; margin:0 auto; display:flex; justify-content: space-between; align-items:center; padding:0 2rem; }
+.nav-menu { display:flex; list-style:none; gap:2rem; }
+.nav-menu a { text-decoration:none; color:#e74c3c; font-weight:500; transition:color .3s ease; position:relative; }
+.nav-menu a::after { content:''; position:absolute; bottom:-5px; left:0; width:0; height:2px; background:#e74c3c; transition: width .3s ease; }
+.nav-menu a:hover::after { width:100%; }
+.mobile-menu { display:none; flex-direction:column; cursor:pointer; }
+.mobile-menu span { width:25px; height:3px; background:#333; margin:3px 0; transition:.3s; }
+.section-container { max-width:1200px; margin:0 auto; padding: 0 2rem; }
+.section-title { margin-top:120px; text-align:center; font-size:2.5rem; margin-bottom:2rem; color:#2c3e50; position:relative; }
+.section-title::after { content:''; position:absolute; bottom:-10px; left:50%; transform:translateX(-50%); width:80px; height:3px; background:#e74c3c; }
+.photo-carousel-container { position:relative; max-width:1200px; margin:0 auto; border-radius:20px; overflow:hidden; box-shadow:0 20px 40px rgba(0,0,0,0.15); background:#fff; }
+.photo-carousel { position:relative; height: 600px; }
+.photo-slide { position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; transition: opacity .5s ease; }
+.photo-slide.active { opacity:1; }
+.photo-slide img { width:100%; height:100%; object-fit:cover; display:block; }
+.photo-carousel-btn { position:absolute; top:50%; transform: translateY(-50%); background: rgba(231,76,60,0.9); color:#fff; border:none; border-radius:50%; width: clamp(36px, 7vw, 54px); height: clamp(36px, 7vw, 54px); font-size: clamp(14px, 2.6vw, 22px); cursor:pointer; display:flex; align-items:center; justify-content:center; transition: transform .2s ease, background .2s ease; z-index:10; }
+.photo-carousel-btn:hover { background:#e74c3c; transform: translateY(-50%) scale(1.08); }
+.photo-carousel-btn.prev { left: clamp(8px, 2vw, 20px); }
+.photo-carousel-btn.next { right: clamp(8px, 2vw, 20px); }
+.photo-carousel-dots { position:absolute; bottom: 15px; left:50%; transform:translateX(-50%); display:flex; gap:10px; z-index: 5; }
+.photo-dot { width:10px; height:10px; border-radius:50%; background: rgba(255,255,255,0.6); cursor:pointer; transition: transform .2s ease, background .2s ease; }
+.photo-dot.active { background:#fff; transform: scale(1.2); }
+@media (max-width: 768px) {
+  .nav-menu { position:fixed; top:70px; left:-100%; width:100%; height: calc(100vh - 70px); background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); flex-direction:column; justify-content:start; align-items:center; padding-top:2rem; transition:left .3s ease; }
+  .nav-menu.active { left:0; }
+  .mobile-menu { display:flex; }
+  .section-title { font-size:2rem; margin-top:100px; }
+  .photo-carousel { height: 320px; }
+}
+@media (max-width: 480px) {
+  .nav-container { padding: 0 1rem; }
+  .section-container { padding: 0 1rem; }
+  .photo-carousel { height: 260px; }
+}
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">AB STAR GRUP</a>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html">Acasă</a></li>
+        <li><a href="services.html">Servicii</a></li>
+        <li><a href="parc_auto.html">Parc Auto</a></li>
+        <li><a href="inchiriere_trailer.html">Închiriere Trailer</a></li>
+        <li><a href="prices.html">Tarife</a></li>
+        <li><a href="vanzari.html">Vânzări</a></li>
+        <li><a href="galerie_foto.html" style="color:#c0392b;">Galerie Foto</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="mobile-menu" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <main style="padding: 80px 0;">
+    <div class="section-container">
+      <h1 class="section-title">Galerie Foto</h1>
+      <div class="photo-carousel-container">
+        <div class="photo-carousel" id="photoCarousel">
+          <div class="photo-slide active"><img src="assets/galerie/0dd1aadc-8c4a-49db-8705-d5c8f710565d.jpeg" alt="Galerie 1"></div>
+          <div class="photo-slide"><img src="assets/galerie/25f54cf6-2132-426c-99e3-f5c7b65f6f1b.jpeg" alt="Galerie 2"></div>
+          <div class="photo-slide"><img src="assets/galerie/IMG_1453.jpeg" alt="Galerie 3"></div>
+          <div class="photo-slide"><img src="assets/galerie/IMG_1982.jpeg" alt="Galerie 4"></div>
+          <div class="photo-slide"><img src="assets/galerie/IMG_1983.jpeg" alt="Galerie 5"></div>
+          <div class="photo-slide"><img src="assets/galerie/IMG_2086.jpeg" alt="Galerie 6"></div>
+          <div class="photo-slide"><img src="assets/galerie/IMG_2243.jpeg" alt="Galerie 7"></div>
+          <div class="photo-slide"><img src="assets/galerie/IMG_2319.jpeg" alt="Galerie 8"></div>
+          <div class="photo-slide"><img src="assets/galerie/IMG_2700.jpeg" alt="Galerie 9"></div>
+          <div class="photo-slide"><img src="assets/galerie/IMG_5094.jpeg" alt="Galerie 10"></div>
+          <div class="photo-slide"><img src="assets/galerie/IMG_7181.jpeg" alt="Galerie 11"></div>
+          <div class="photo-slide"><img src="assets/galerie/IMG_8259.jpeg" alt="Galerie 12"></div>
+          <div class="photo-slide"><img src="assets/galerie/IMG_8687.jpeg" alt="Galerie 13"></div>
+          <div class="photo-slide"><img src="assets/galerie/IMG_8735.jpeg" alt="Galerie 14"></div>
+          <div class="photo-slide"><img src="assets/galerie/IMG_8834.jpeg" alt="Galerie 15"></div>
+          <div class="photo-slide"><img src="assets/galerie/IMG_9455.jpeg" alt="Galerie 16"></div>
+          <div class="photo-slide"><img src="assets/galerie/IMG_9598.jpeg" alt="Galerie 17"></div>
+          <div class="photo-slide"><img src="assets/galerie/IMG_9740.jpeg" alt="Galerie 18"></div>
+        </div>
+        <button class="photo-carousel-btn prev" id="prevPhoto" aria-label="Imagine anterioară">❮</button>
+        <button class="photo-carousel-btn next" id="nextPhoto" aria-label="Imagine următoare">❯</button>
+        <div class="photo-carousel-dots" id="photoDots"></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) { navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); }
+  });
+  // Mobile menu
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navMenu = document.getElementById('nav-menu');
+  mobileMenu.addEventListener('click', function(){ navMenu.classList.toggle('active'); });
+
+  // Photo carousel
+  let currentPhotoSlide = 0;
+  const photoSlides = Array.from(document.querySelectorAll('.photo-slide'));
+  const prevPhotoBtn = document.getElementById('prevPhoto');
+  const nextPhotoBtn = document.getElementById('nextPhoto');
+  const dotsContainer = document.getElementById('photoDots');
+  const dots = [];
+
+  function buildDots() {
+    dotsContainer.innerHTML = '';
+   photoSlides.forEach((_, i) => {
+      const d = document.createElement('div');
+      d.className = 'photo-dot' + (i === 0 ? ' active' : '');
+      d.addEventListener('click', () => { currentPhotoSlide = i; showPhotoSlide(currentPhotoSlide); });
+      dotsContainer.appendChild(d);
+      dots.push(d);
+    });
+  }
+
+  function showPhotoSlide(index) {
+    photoSlides.forEach(slide => slide.classList.remove('active'));
+    if (dots.length) { dots.forEach(dot => dot.classList.remove('active')); }
+    photoSlides[index].classList.add('active');
+    if (dots.length) { dots[index].classList.add('active'); }
+  }
+  function nextPhotoSlide() {
+    currentPhotoSlide = (currentPhotoSlide + 1) % photoSlides.length;
+    showPhotoSlide(currentPhotoSlide);
+  }
+  function prevPhotoSlide() {
+    currentPhotoSlide = (currentPhotoSlide - 1 + photoSlides.length) % photoSlides.length;
+    showPhotoSlide(currentPhotoSlide);
+  }
+  buildDots();
+  nextPhotoBtn.addEventListener('click', nextPhotoSlide);
+  prevPhotoBtn.addEventListener('click', prevPhotoSlide);
+  // Auto-advance
+  setInterval(nextPhotoSlide, 4000);
+
+  // Keyboard and swipe support
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prevPhotoSlide();
+    if (e.key === 'ArrowRight') nextPhotoSlide();
+  });
+  let touchStartX = 0; let touchEndX = 0;
+  const pc = document.getElementById('photoCarousel');
+  pc.addEventListener('touchstart', (e)=>{ touchStartX = e.changedTouches[0].screenX; });
+  pc.addEventListener('touchend', (e)=>{ touchEndX = e.changedTouches[0].screenX;
+    const threshold = 50;
+    if (touchEndX < touchStartX - threshold) nextPhotoSlide();
+    if (touchEndX > touchStartX + threshold) prevPhotoSlide();
+  });
+  </script>
+</body>
+</html>

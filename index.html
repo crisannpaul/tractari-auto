@@ -506,12 +506,11 @@
             background: rgba(231, 76, 60, 0.9);
             color: white;
             border: none;
-            padding: 15px 20px;
-            font-size: 18px;
             cursor: pointer;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: clamp(36px, 7vw, 54px);
+            height: clamp(36px, 7vw, 54px);
+            font-size: clamp(14px, 2.6vw, 22px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -525,11 +524,11 @@
         }
 
         .photo-carousel-btn.prev {
-            left: 20px;
+            left: clamp(8px, 2vw, 20px);
         }
 
         .photo-carousel-btn.next {
-            right: 20px;
+            right: clamp(8px, 2vw, 20px);
         }
 
         .photo-carousel-dots {
@@ -917,6 +916,7 @@
                 <li><a href="inchiriere_trailer.html">Închiriere Trailer</a></li>
                 <li><a href="prices.html">Tarife</a></li>
                 <li><a href="vanzari.html">Vânzări</a></li>
+                <li><a href="galerie_foto.html">Galerie Foto</a></li>
                 <li><a href="contact.html" >Contact</a></li>
             </ul>
             <div class="mobile-menu" id="mobile-menu">
